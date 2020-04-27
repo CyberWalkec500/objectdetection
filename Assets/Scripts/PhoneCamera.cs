@@ -67,7 +67,7 @@ public class PhoneCamera : MonoBehaviour
         {
             if(!devices[i].isFrontFacing)
             {
-                this.backCamera = new WebCamTexture(devices[i].name, Screen.width, Screen.height);
+                this.backCamera = new WebCamTexture(devices[i].name, 1080, 1080);
             }
         }
 
@@ -83,6 +83,7 @@ public class PhoneCamera : MonoBehaviour
         this.background.texture = this.backCamera;
         this.backgroundSize = new Vector2(this.backCamera.width, this.backCamera.height);
         camAvailable = true;
+        this.uiText.text = "Width:" + this.backCamera.width.ToString() + "\nResuested:" + this.backCamera.requestedWidth;
 
         string func = mode == Mode.Classify ? nameof(TFClassify) : nameof(TFDetect);
         InvokeRepeating(func, 1f, 1f);
@@ -97,7 +98,8 @@ public class PhoneCamera : MonoBehaviour
         }
 
         float ratio = (float)backCamera.width / (float)backCamera.height;
-        fitter.aspectRatio = ratio;
+        fitter.aspectMode = AspectRatioFitter.AspectMode.FitInParent;
+        //fitter.aspectRatio = ratio;
 
         float scaleY = backCamera.videoVerticallyMirrored ? -1f : 1f;
         background.rectTransform.localScale = new Vector3(1f, scaleY, 1f);

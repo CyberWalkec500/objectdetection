@@ -46,8 +46,9 @@ public class PhoneCamera : MonoBehaviour
     public TextAsset modelFile;
     public TextAsset labelsFile;
     public Text uiText;
-    
 
+    public GameObject indicator;
+    private GameObject apple;
     private void Start()
     {
         LoadWorker();

@@ -24,7 +24,7 @@ namespace TFClassify
         private static float IMAGE_STD = 1;
         
         // Minimum detection confidence to track a detection.
-        private static float MINIMUM_CONFIDENCE = 0.05f;
+        private static float MINIMUM_CONFIDENCE = 0.001f;
 
         private int inputSize;
         private TFGraph graph;

@@ -5,15 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 class CollectButton :MonoBehaviour {
     public Button button;
     public Text hide;
     private void Start() {
-        var btn = button.GetComponent<Button>();
-        btn.onClick.AddListener(Onclick);
+        //this.button = GameObject.Find("Button").GetComponent<Button>();
+        //this.hide = GameObject.Find("Text").GetComponent<Text>();
     }
-    public void Onclick() {
+    public void Clicked() {
         hide.GetComponent<Text>().text = "clicked!";
+        SceneManager.LoadScene(1);
     }
 }
